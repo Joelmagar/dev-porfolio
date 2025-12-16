@@ -1,0 +1,251 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Futuristic 3D Portfolio Design System
+All colors MUST be HSL for proper theming.
+*/
+
+@layer base {
+  :root {
+    /* Space theme - deep blues and cosmic blacks */
+    --background: 220 25% 5%;
+    --foreground: 220 15% 85%;
+
+    /* Cards with glass morphism effect */
+    --card: 220 25% 8%;
+    --card-foreground: 220 15% 90%;
+
+    /* Popover with enhanced contrast */
+    --popover: 220 25% 10%;
+    --popover-foreground: 220 15% 95%;
+
+    /* Neon cyan primary */
+    --primary: 184 100% 50%;
+    --primary-foreground: 220 25% 5%;
+
+    /* Electric purple secondary */
+    --secondary: 270 100% 60%;
+    --secondary-foreground: 220 15% 95%;
+
+    /* Muted with subtle blue tint */
+    --muted: 220 20% 15%;
+    --muted-foreground: 220 15% 60%;
+
+    /* Neon accent colors */
+    --accent: 300 100% 65%;
+    --accent-foreground: 220 25% 5%;
+
+    /* Destructive with neon red */
+    --destructive: 0 100% 55%;
+    --destructive-foreground: 220 15% 95%;
+
+    /* Borders with subtle glow */
+    --border: 220 25% 20%;
+    --input: 220 25% 15%;
+    --ring: 184 100% 50%;
+
+    /* Custom 3D portfolio tokens */
+    --neon-blue: 200 100% 50%;
+    --neon-purple: 270 100% 60%;
+    --neon-pink: 320 100% 60%;
+    --space-dark: 220 30% 3%;
+    --glass: 220 25% 8%;
+    --glow-primary: 184 100% 50%;
+    --glow-secondary: 270 100% 60%;
+
+    /* Gradients */
+    --gradient-cosmic: linear-gradient(135deg, hsl(220 30% 3%), hsl(220 25% 8%));
+    --gradient-neon: linear-gradient(45deg, hsl(184 100% 50%), hsl(270 100% 60%));
+    --gradient-glass: linear-gradient(135deg, hsl(220 25% 8% / 0.8), hsl(220 25% 12% / 0.6));
+
+    /* Shadows and glows */
+    --shadow-neon: 0 0 20px hsl(184 100% 50% / 0.3);
+    --shadow-purple: 0 0 20px hsl(270 100% 60% / 0.3);
+    --shadow-glass: 0 8px 32px hsl(220 30% 3% / 0.3);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    --radius: 1rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  /* Enhanced dark theme for 3D portfolio */
+  .dark {
+    --background: 220 30% 2%;
+    --foreground: 220 15% 90%;
+
+    --card: 220 25% 6%;
+    --card-foreground: 220 15% 95%;
+
+    --popover: 220 25% 8%;
+    --popover-foreground: 220 15% 95%;
+
+    --primary: 184 100% 60%;
+    --primary-foreground: 220 30% 2%;
+
+    --secondary: 270 100% 70%;
+    --secondary-foreground: 220 15% 95%;
+
+    --muted: 220 20% 12%;
+    --muted-foreground: 220 15% 55%;
+
+    --accent: 300 100% 70%;
+    --accent-foreground: 220 30% 2%;
+
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 220 15% 95%;
+
+    --border: 220 25% 18%;
+    --input: 220 25% 12%;
+    --ring: 184 100% 60%;
+
+    /* Enhanced 3D elements */
+    --neon-blue: 200 100% 60%;
+    --neon-purple: 270 100% 70%;
+    --neon-pink: 320 100% 70%;
+    --space-dark: 220 30% 1%;
+    --glass: 220 25% 6%;
+    --glow-primary: 184 100% 60%;
+    --glow-secondary: 270 100% 70%;
+
+    --shadow-neon: 0 0 30px hsl(184 100% 60% / 0.4);
+    --shadow-purple: 0 0 30px hsl(270 100% 70% / 0.4);
+
+    --sidebar-background: 220 25% 6%;
+    --sidebar-foreground: 220 15% 90%;
+    --sidebar-primary: 184 100% 50%;
+    --sidebar-primary-foreground: 220 30% 2%;
+    --sidebar-accent: 220 20% 12%;
+    --sidebar-accent-foreground: 220 15% 90%;
+    --sidebar-border: 220 25% 18%;
+    --sidebar-ring: 184 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  /* Scrollbar styling for futuristic look */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--space-dark));
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, hsl(var(--neon-blue)), hsl(var(--neon-purple)));
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, hsl(var(--neon-purple)), hsl(var(--neon-pink)));
+  }
+}
+
+@layer components {
+  /* Glass morphism utility */
+  .glass {
+    background: linear-gradient(135deg, hsl(var(--glass) / 0.7), hsl(var(--glass) / 0.3));
+    backdrop-filter: blur(10px);
+    border: 1px solid hsl(var(--border) / 0.3);
+  }
+
+  /* Neon glow effects */
+  .glow-primary {
+    box-shadow: var(--shadow-neon);
+  }
+
+  .glow-secondary {
+    box-shadow: var(--shadow-purple);
+  }
+
+  /* Floating animation */
+  .floating {
+    animation: floating 6s ease-in-out infinite;
+  }
+
+  .floating-delayed {
+    animation: floating 6s ease-in-out infinite;
+    animation-delay: -3s;
+  }
+
+  /* Text gradient */
+  .text-gradient {
+    background: var(--gradient-neon);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@layer utilities {
+  /* Custom keyframes */
+  @keyframes floating {
+    0%, 100% {
+      transform: translate3d(0, 0px, 0);
+    }
+    50% {
+      transform: translate3d(0, -20px, 0);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px hsl(var(--glow-primary) / 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px hsl(var(--glow-primary) / 0.6);
+    }
+  }
+
+  @keyframes rotate-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Responsive animations */
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-floating {
+      animation: floating 6s ease-in-out infinite;
+    }
+
+    .animate-pulse-glow {
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+
+    .animate-rotate-slow {
+      animation: rotate-slow 20s linear infinite;
+    }
+  }
+}
