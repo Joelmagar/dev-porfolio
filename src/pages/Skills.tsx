@@ -50,18 +50,15 @@ export const Skills = () => {
   return (
     <section className="py-20">
       <div className="container mx-auto px-6">
-        <div className="flex items-center gap-4 text-2xl md:text-4xl font-bold text-foreground mb-10">
+        <div className="flex items-center gap-4 relative text-2xl md:text-4xl font-bold text-foreground mb-1">
           <span className="font-mono text-primary text-xl">03.</span>
-          <h1 className="flex flex-col">
-            {" "}
-            Skills & Technologies
-            {/* <span className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Mastering cutting-edge technologies to create exceptional digital
-              experiences
-            </span> */}
-          </h1>
+          <h1 className="flex flex-col"> Skills & Technologies</h1>
           <span className="h-px bg-border flex-1 max-w-full" />
         </div>
+        <span className="text-lg relative md:ml-14 text-muted-foreground max-w-2xl ">
+          Mastering cutting-edge technologies to create exceptional digital
+          experiences
+        </span>
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gradient"></h2>
         </div>
@@ -70,7 +67,7 @@ export const Skills = () => {
           {skillCategories.map((category, index) => (
             <Card
               key={category.title}
-              className="border border-border bg-primary/5 backdrop-blur-sm  z-20 hover:scale-105 transition-all duration-300 animate-floating"
+              className="border border-border bg-black/5 backdrop-blur-sm  z-20 hover:scale-105 transition-all duration-300 animate-floating"
               style={{
                 animationDelay: `${index * 0.2}s`,
                 animationDuration: `${6 + index * 0.5}s`,
@@ -86,7 +83,7 @@ export const Skills = () => {
               </CardHeader>
 
               <CardContent>
-                <div className="flex  gap-2 justify-center">
+                <div className="flex flex-wrap  gap-2 justify-center">
                   {category.skills.map((skill, skillIndex) => (
                     <Badge
                       key={skill}
@@ -107,7 +104,7 @@ export const Skills = () => {
 
         {/* Floating tech icons */}
         <div className="relative mt-16 h-32">
-          <div className="absolute inset-0 flex items-center justify-center space-x-8 opacity-80">
+          <div className="absolute inset-0 flex flex-wrap items-center justify-center space-x-8 opacity-80">
             <div className="text-6xl animate-floating">⚛️</div>
             <div className="text-6xl animate-floating floating-delayed">🔧</div>
             <div

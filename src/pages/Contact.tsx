@@ -6,19 +6,18 @@ import { Label } from "@/components/ui/label";
 import { Mail, MessageCircle, Send, MapPin } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
+import emailjs from "@emailjs/browser";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
+    content: "",
+    contact: "",
+    subject: "",
   });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    toast.success("Message sent! I'll get back to you soon.");
-    setFormData({ name: "", email: "", message: "" });
-  };
+  const [isLoading, setLoading] = useState<boolean>(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -28,19 +27,55 @@ export const Contact = () => {
       [e.target.name]: e.target.value,
     }));
   };
+  const onsubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    setLoading(true);
+    e.preventDefault();
+    let params = {
+      email: formData?.email,
+      name: formData?.name,
+      send_to: "magarjoel8@gmail.com",
+      company_name: "Joel magar",
+      content: formData?.content,
+      contact: formData?.contact,
+    };
+
+    emailjs
+      .send("service_44k10g2", "portfolio_templateid123", params, {
+        publicKey: "G30jRKTI2kAy25NYn",
+      })
+      .then(
+        () => {
+          toast.success("Success");
+          setFormData({
+            name: "",
+            email: "",
+            message: "",
+            content: "",
+            contact: "",
+            subject: "",
+          });
+        },
+        (error) => {
+          toast.error("error");
+        }
+      )
+      .finally(() => {
+        setLoading(false);
+      });
+  };
 
   return (
     <section className="py-20">
       <div className="container mx-auto px-6">
         <h2 className="flex  items-center gap-4 w-full  text-primary   mx-auto text-2xl md:text-xl font-bold  mb-10">
           <span className="h-px bg-border flex-1 max-w-full" />
-          <span className="font-mono w-fit mx-auto text-primary text-xl">
+          <span className="font-mono relative w-fit mx-auto text-primary text-xl">
             04. What's next?
           </span>
 
           <span className="h-px bg-border flex-1 max-w-full" />
         </h2>
-        <div className="text-center mb-16">
+        <div className="text-center relative mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-transparent bg-gradient-to-br from-white via-primary w-fit mx-auto to-secondary bg-clip-text">
             Get In Touch
           </h2>
@@ -52,7 +87,7 @@ export const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <Card className="bg-black/50  animate-pulse-glow ">
+          <Card className="bg-black/50 relative animate-pulse-glow ">
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-foreground">
                 <MessageCircle className="h-5 w-5 text-primary" />
@@ -61,7 +96,7 @@ export const Contact = () => {
             </CardHeader>
 
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6 ">
+              <form onSubmit={onsubmit} className="space-y-6 ">
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-foreground">
                     Name
@@ -76,7 +111,6 @@ export const Contact = () => {
                     className="glass border-border/50 focus:border-primary/50"
                   />
                 </div>
-
                 <div className="space-y-2">
                   <Label htmlFor="email" className="text-foreground">
                     Email
@@ -92,15 +126,29 @@ export const Contact = () => {
                     className="glass border-border/50 focus:border-primary/50"
                   />
                 </div>
+                <div className="space-y-2">
+                  <Label htmlFor="contact" className="text-foreground">
+                    Number
+                  </Label>
+                  <Input
+                    id="contact"
+                    name="contact"
+                    value={formData.contact}
+                    onChange={handleChange}
+                    placeholder="Your Number"
+                    required
+                    className="glass border-border/50 focus:border-primary/50"
+                  />
+                </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="message" className="text-foreground">
                     Message
                   </Label>
                   <Textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
+                    id="content"
+                    name="content"
+                    value={formData.content}
                     onChange={handleChange}
                     placeholder="Tell me about your project..."
                     rows={5}
@@ -109,12 +157,9 @@ export const Contact = () => {
                   />
                 </div>
 
-                <Button
-                  type="submit"
-                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground glow-primary"
-                >
+                <Button type="submit" disabled={isLoading}>
                   <Send className="h-4 w-4 mr-2" />
-                  Send Message
+                  {isLoading ? "sending..." : "Send Message"}
                 </Button>
               </form>
             </CardContent>
@@ -130,7 +175,9 @@ export const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground">Email</h3>
-                    <p className="text-muted-foreground">hello@portfolio.com</p>
+                    <p className="text-muted-foreground">
+                      magarjoel8@gmail.com
+                    </p>
                   </div>
                 </div>
               </CardContent>
@@ -144,7 +191,7 @@ export const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-semibold text-foreground">Location</h3>
-                    <p className="text-muted-foreground">San Francisco, CA</p>
+                    <p className="text-muted-foreground">Kathmandu, Nepal</p>
                   </div>
                 </div>
               </CardContent>

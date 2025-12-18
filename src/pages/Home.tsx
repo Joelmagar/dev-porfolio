@@ -9,13 +9,13 @@ import { Footer } from "./Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen  max-w-screen relative  overflow-x-hidden text-foreground">
       {/* 3D Background Scene */}
 
       <Navigation />
       <Scene />
 
-      <main>
+      <main className="py-20 md:py-0">
         <section id="home">
           <Hero />
         </section>

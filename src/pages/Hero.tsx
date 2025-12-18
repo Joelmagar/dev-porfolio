@@ -10,11 +10,11 @@ export function Hero() {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center  overflow-hidden ">
+    <section className="min-h-[90vh]  flex items-center justify-center   overflow-hidden ">
       <div className="container  mx-auto px-6   ">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 z-10  p-2 ">
-            <div className="space-y-4  p-2 rounded-sm">
+          <div className="space-y-8  relative p-2 ">
+            <div className="space-y-4  p-2 rounded-sm ">
               <p className="text-primary font-medium tracking-wide  text-sm">
                 Hi , I am
               </p>
@@ -76,7 +76,7 @@ export function Hero() {
               />
               {/* <div className="absolute inset-0 bg-gradient-primary opacity-20 rounded-full blur-2xl scale-75" /> */}
 
-              {/* <div className="relative z-10 w-full h-full rounded-2xl border border-primary/10 bg-card/20 backdrop-blur-sm overflow-hidden shadow-elegant">
+              {/* <div className="relative  w-full h-full rounded-2xl border border-primary/10 bg-card/20 backdrop-blur-sm overflow-hidden shadow-elegant">
                 <ThreeScene />
               </div>
 

@@ -26,17 +26,19 @@ export const Navigation = () => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
-      setIsMobileMenuOpen(false);
+      // setIsMobileMenuOpen(false);
     }
   };
 
   return (
     <nav
-      className={`fixed left-0 right-0 top-0 border-b-2 z-50 transition-all duration-300 ${
-        isScrolled ? " backdrop-blur-md   border-white/30" : "border-transparent"
+      className={`fixed left-0 w-full top-0 border-b-2 z-50 duration-300 ${
+        isScrolled
+          ? " backdrop-blur-md   border-white/30"
+          : "border-transparent"
       }`}
     >
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-6 py-4 ">
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="text-2xl font-bold text-gradient">Joel Magar</div>
@@ -59,7 +61,7 @@ export const Navigation = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden glass"
+            className="md:hidden  glass"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? (
@@ -68,24 +70,24 @@ export const Navigation = () => {
               <Menu className="h-5 w-5" />
             )}
           </Button>
+          {isMobileMenuOpen && (
+            <div className="md:hidden mt-4 glass fixed top-full w-screen backdrop-blur-lg  rounded-lg p-4 animate-in duration-400 slide-in-from-bottom-5">
+              <div className="flex flex-col space-y-4">
+                {navItems.map((item) => (
+                  <button
+                    key={item.label}
+                    onClick={() => scrollToSection(item.href)}
+                    className="text-foreground hover:text-primary transition-colors duration-300 text-left py-2"
+                  >
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden mt-4 glass rounded-lg p-4 animate-in slide-in-from-top-2">
-            <div className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <button
-                  key={item.label}
-                  onClick={() => scrollToSection(item.href)}
-                  className="text-foreground hover:text-primary transition-colors duration-300 text-left py-2"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </nav>
   );

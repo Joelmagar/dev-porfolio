@@ -8,7 +8,7 @@ import { FloatingShapes } from "./FloatingShapes";
 
 export default function Scene() {
   return (
-    <div className="fixed h-full inset-0 ">
+    <div className="fixed h-full inset-0 z-0 ">
       <Canvas
         camera={{ position: [0, 0, 10], fov: 75 }}
         gl={{ alpha: true, antialias: true }}
@@ -28,16 +28,16 @@ export default function Scene() {
           />
 
           <Stars
-            radius={100}
+            radius={1}
             depth={50}
-            count={200}
-            factor={4}
-            saturation={0}
+            count={20}
+            factor={10}
+            saturation={20}
             fade
             speed={1}
           />
           {/* <Sparkles color={"yellow"} count={10000} size={100} /> */}
-          <ParticleField />
+          <ParticleField  />
 
           {/* <Float speed={2} rotationIntensity={4} floatIntensity={10}>
             <FloatingShapes />

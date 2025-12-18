@@ -10,6 +10,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Github, Folder } from "lucide-react";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { AutoScroll } from "@splidejs/splide-extension-auto-scroll";
+import "@splidejs/splide/dist/css/splide.min.css";
 
 interface Project {
   id: number;
@@ -28,7 +31,7 @@ const projects: Project[] = [
     description:
       "An all-in-one guitar app designed to guide players from beginner to advanced, with lessons, exercises, tools, and practice plans that help you build skills, improve technique, and grow confidently at every stage of your guitar journey.",
     image: "/strumify.png",
-    tech: ["React", "TypeScript", "D3.js", "TensorFlow.js", "WebGL"],
+    tech: ["Next.js", "TypeScript", "TailwindCss", "MongoDb"],
     liveUrl: "#",
     githubUrl: "#",
   },
@@ -38,7 +41,14 @@ const projects: Project[] = [
     description:
       "A real-time messaging app with private and group chat features, online status indicators, and message notifications. Full MERN stack implementation with Socket.io for live updates.",
     image: "/chatup.png",
-    tech: ["WebXR", "Three.js", "WebGL", "Spatial Audio", "React"],
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "MongoDb",
+      "Expressjs",
+      "TailwindCss",
+    ],
     liveUrl: "#",
     githubUrl: "#",
   },
@@ -46,9 +56,17 @@ const projects: Project[] = [
     id: 3,
     title: "BoozeBar",
     description:
-      "A full-featured e-commerce platform with product management, cart functionality, payment integration with Stripe, and admin dashboard. Built with React frontend and collaborated with a Django backend team.",
+      "A full-featured e-commerce platform with product management, cart functionality, payment integration with Stripe, and admin dashboard. Built with React frontend and collaborated with a Nodejs backend team.",
     image: "/boozebar.png",
-    tech: ["Solidity", "Web3.js", "React", "IPFS", "MetaMask"],
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "MongoDb",
+      "Expressjs",
+      "TailwindCss",
+      "Stripe",
+    ],
     liveUrl: "#",
     githubUrl: "#",
   },
@@ -56,50 +74,75 @@ const projects: Project[] = [
     id: 4,
     title: "MockUp",
     description:
-      "A mock test application designed to simulate real exam experiences with a clean interface, timed assessments, and detailed performance insights.",
+      "A mock test application with AI powered feedback designed to simulate real exam experiences with a clean interface, timed assessments, and detailed performance insights.It also has admin dashboard to upload new questions and tests.",
     image: "/mockup.png",
-    tech: ["Three.js", "TensorFlow.js", "WebWorkers", "React", "WebGL"],
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "MongoDb",
+      "Expressjs",
+      "TailwindCss",
+      "Stripe",
+    ],
     liveUrl: "#",
     githubUrl: "#",
   },
 ];
 const otherProjects = [
   {
-    title: "Weather Dashboard",
+    title: "Random Scale Generator",
     description:
-      "A weather application with location-based forecasts, interactive maps, and historical data visualization.",
-    tech: ["React", "OpenWeather API", "Chart.js"],
+      "A simple tool that gives random note and scales to practice guitar efectively.",
+    tech: ["HTML", "CSS", "JavaScript"],
     github: "https://github.com",
-    live: "https://example.com",
+    live: "https://guitarscales.netlify.app/",
   },
   {
-    title: "Blog CMS",
+    title: "ihrTrack",
     description:
-      "A headless CMS for managing blog content with markdown support, image optimization, and SEO features.",
-    tech: ["Node.js", "MongoDB", "Express", "React"],
+      "Advanced HR tracking with seamless, secure, and smart solutions. Featuring biometric login, AI-powered facial recognition, RFID access, and mobile check-ins with geolocation.",
+    tech: ["Reactjs", "TailwindCSS", "JavaScript", "Websocket"],
     github: "https://github.com",
+    live: "https://ihrtrack.com",
   },
   {
-    title: "Portfolio Generator",
+    title: "ByteCape",
     description:
-      "A CLI tool that generates responsive portfolio websites from JSON configuration files.",
-    tech: ["Node.js", "Handlebars", "SCSS"],
+      "A landing page showcasing every events , blogs and seemless animations of the company bytecape.",
+    tech: ["Reactjs", "TailwindCSS", "JavaScript", "emailjs"],
     github: "https://github.com",
+    live: "https://bytecape.com",
+  },
+  {
+    title: "Medipuzzle",
+    description:
+      "Medipuzzle is a game-based learning platform for Medical Education that makes learning online easier.The website features two engaging quiz games tailored for medical enthusiasts.And the app contains more than 5 other games to boost user's medical knowledge. ",
+    tech: ["Reactjs", "TailwindCSS", "JavaScript"],
+    github: "https://github.com",
+    live: "https://medipuzzle.com",
+  },
+  {
+    title: "Uniseek",
+    description:
+      "A comprehensive web app designed to simplify the study abroad application process. Key features include global university search, document management, Duolingo English Test (DET) preparation with mock tests, and an advanced appointment booking system for consultations. The platform also offers personalized guidance on program selection, visa assistance, scholarships, and financial planning, all in one seamless experience. ",
+    tech: ["Nextjs", "TailwindCSS", "TypeScript"],
+    github: "https://github.com",
+    live: "https://uniseek.app",
   },
 ];
 
 export const Projects = () => {
   return (
     <section id="projects" className="py-20 ">
-      <div className="container mx-auto px-6">
-        <h2 className="flex items-center gap-4 text-2xl md:text-4xl font-bold text-foreground mb-10">
+      <div className="container mx-auto px-6 ">
+        <h2 className="relative flex items-center gap-4 text-2xl md:text-4xl font-bold text-foreground mb-1">
           <span className="font-mono text-primary text-xl">02.</span>
           Featured Projects
           <span className="h-px bg-border flex-1 max-w-full" />
         </h2>
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl  font-bold mb-4 text-gradient"></h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+        <div className="relative text-center mb-16 md:ml-14">
+          <p className="text-xl text-muted-foreground  text-start ">
             Showcasing innovative solutions that push the boundaries of web
             technology
           </p>
@@ -168,54 +211,80 @@ export const Projects = () => {
             </Card>
           ))}
         </div>
-        <h3 className="text-center text-2xl font-semibold text-foreground my-10">
+        <h3 className="text-center relative text-4xl text-gradient font-bold text-foreground mt-20">
           Other Noteworthy Projects
         </h3>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {otherProjects.map((project, index) => (
-            <div
-              key={project.title}
-              className="group p-6 rounded-lg bg-card border border-border hover:border-primary/50 hover:-translate-y-2 transition-all duration-300"
-              style={{ transitionDelay: `${index * 50}ms` }}
-            >
-              <div className="flex items-center justify-between mb-6">
-                <Folder className="w-10 h-10 text-primary" />
-                <div className="flex gap-3">
-                  {project.github && (
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      <Github size={18} />
-                    </a>
-                  )}
-                  {project.live && (
-                    <a
-                      href={project.live}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      <ExternalLink size={18} />
-                    </a>
-                  )}
+        <div className="   relative  gap-4">
+          <Splide
+            options={{
+              type: "loop",
+              perPage: 3,
+              perMove: 1,
+              gap: "2rem",
+              autoScroll: {
+                pauseOnHover: true,
+                pauseOnFocus: false,
+                rewind: true,
+                speed: 1,
+              },
+              arrows: false,
+              pagination: false,
+              breakpoints: {
+                768: {
+                  perPage: 1.5,
+                },
+                1024: {
+                  perPage: 3,
+                },
+              },
+            }}
+            extensions={{ AutoScroll }}
+          >
+            {otherProjects.map((project, index) => (
+              <SplideSlide
+                key={index}
+                className="group p-6 w-full mt-5  rounded-lg bg-card/50 border border-border hover:border-primary/50 hover:-translate-y-2 transition-all duration-300"
+                // style={{ transitionDelay: `${index * 50}ms` }}
+              >
+                <div className="flex items-center justify-between mb-6">
+                  <Folder className="w-10 h-10 text-primary" />
+                  <div className="flex gap-3">
+                    {project.github && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        <Github size={18} />
+                      </a>
+                    )}
+                    {project.live && (
+                      <a
+                        href={project.live}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        <ExternalLink size={18} />
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </div>
-              <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                {project.title}
-              </h4>
-              <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                {project.description}
-              </p>
-              <ul className="flex flex-wrap gap-2 font-mono text-xs text-muted-foreground">
-                {project.tech.map((tech) => (
-                  <li key={tech}>{tech}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                  {project.title}
+                </h4>
+                <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
+                  {project.description}
+                </p>
+                <ul className="flex flex-wrap gap-2 font-mono text-xs text-muted-foreground">
+                  {project.tech.map((tech) => (
+                    <li key={tech}>{tech}</li>
+                  ))}
+                </ul>
+              </SplideSlide>
+            ))}
+          </Splide>
         </div>
       </div>
     </section>
