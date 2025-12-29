@@ -157,7 +157,7 @@ export const Contact = () => {
                   />
                 </div>
 
-                <Button type="submit" disabled={isLoading}>
+                <Button className="w-full" type="submit" disabled={isLoading}>
                   <Send className="h-4 w-4 mr-2" />
                   {isLoading ? "sending..." : "Send Message"}
                 </Button>
