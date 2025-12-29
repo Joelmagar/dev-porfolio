@@ -24,6 +24,7 @@ All colors MUST be HSL for proper theming.
     --primary: 184 100% 50%;
     --primary-foreground: 220 25% 5%;
 
+    --popover: 220 25% 8%;
     /* Electric purple secondary */
     --secondary: 270 100% 60%;
     --secondary-foreground: 220 15% 95%;
@@ -55,9 +56,21 @@ All colors MUST be HSL for proper theming.
     --glow-secondary: 270 100% 60%;
 
     /* Gradients */
-    --gradient-cosmic: linear-gradient(135deg, hsl(220 30% 3%), hsl(220 25% 8%));
-    --gradient-neon: linear-gradient(45deg, hsl(184 100% 50%), hsl(270 100% 60%));
-    --gradient-glass: linear-gradient(135deg, hsl(220 25% 8% / 0.8), hsl(220 25% 12% / 0.6));
+    --gradient-cosmic: linear-gradient(
+      135deg,
+      hsl(220 30% 3%),
+      hsl(220 25% 8%)
+    );
+    --gradient-neon: linear-gradient(
+      45deg,
+      hsl(184 100% 50%),
+      hsl(270 100% 60%)
+    );
+    --gradient-glass: linear-gradient(
+      135deg,
+      hsl(220 25% 8% / 0.8),
+      hsl(220 25% 12% / 0.6)
+    );
 
     /* Shadows and glows */
     --shadow-neon: 0 0 20px hsl(184 100% 50% / 0.3);
@@ -85,6 +98,9 @@ All colors MUST be HSL for proper theming.
     --sidebar-border: 220 13% 91%;
 
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --cardgreen: 164 64% 49%;
+    --cardorange: 29 95% 59%;
   }
 
   /* Enhanced dark theme for 3D portfolio */
@@ -94,6 +110,9 @@ All colors MUST be HSL for proper theming.
 
     --card: 220 25% 6%;
     --card-foreground: 220 15% 95%;
+
+    --cardgreen: 164 64% 49%;
+    --card0range: 29 95% 59%;
 
     --popover: 220 25% 8%;
     --popover-foreground: 220 15% 95%;
@@ -147,7 +166,7 @@ All colors MUST be HSL for proper theming.
 
   body {
     @apply bg-background text-foreground overflow-x-hidden;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: "Inter", system-ui, -apple-system, sans-serif;
   }
 
   /* Scrollbar styling for futuristic look */
@@ -160,19 +179,31 @@ All colors MUST be HSL for proper theming.
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, hsl(var(--neon-blue)), hsl(var(--neon-purple)));
+    background: linear-gradient(
+      180deg,
+      hsl(var(--neon-blue)),
+      hsl(var(--neon-purple))
+    );
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, hsl(var(--neon-purple)), hsl(var(--neon-pink)));
+    background: linear-gradient(
+      180deg,
+      hsl(var(--neon-purple)),
+      hsl(var(--neon-pink))
+    );
   }
 }
 
 @layer components {
   /* Glass morphism utility */
   .glass {
-    background: linear-gradient(135deg, hsl(var(--glass) / 0.7), hsl(var(--glass) / 0.3));
+    background: linear-gradient(
+      135deg,
+      hsl(var(--glass) / 0.7),
+      hsl(var(--glass) / 0.3)
+    );
     backdrop-filter: blur(10px);
     border: 1px solid hsl(var(--border) / 0.3);
   }
@@ -208,7 +239,8 @@ All colors MUST be HSL for proper theming.
 @layer utilities {
   /* Custom keyframes */
   @keyframes floating {
-    0%, 100% {
+    0%,
+    100% {
       transform: translate3d(0, 0px, 0);
     }
     50% {
@@ -217,7 +249,8 @@ All colors MUST be HSL for proper theming.
   }
 
   @keyframes pulse-glow {
-    0%, 100% {
+    0%,
+    100% {
       box-shadow: 0 0 20px hsl(var(--glow-primary) / 0.3);
     }
     50% {

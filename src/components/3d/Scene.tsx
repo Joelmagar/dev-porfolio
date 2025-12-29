@@ -21,23 +21,23 @@ export default function Scene() {
             intensity={0.5}
             color="#06b6d4"
           />
-          <pointLight
+          {/* <pointLight
             position={[-10, -10, -5]}
             intensity={0.3}
-            color="#8b5cf6"
-          />
+            color="#ffffff"
+          /> */}
 
           <Stars
-            radius={1}
-            depth={50}
-            count={20}
+            radius={20}
+            depth={100}
+            count={200}
             factor={10}
             saturation={20}
             fade
-            speed={1}
+            speed={2}
           />
-          {/* <Sparkles color={"yellow"} count={10000} size={100} /> */}
-          <ParticleField  />
+          {/* <Sparkles color={"yellow"} count={100} size={10} /> */}
+          {/* <ParticleField /> */}
 
           {/* <Float speed={2} rotationIntensity={4} floatIntensity={10}>
             <FloatingShapes />

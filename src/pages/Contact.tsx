@@ -183,14 +183,14 @@ export const Contact = () => {
               </CardContent>
             </Card>
 
-            <Card className="bg-black/50   animate-floating duration-100 ">
+            <Card className="bg-black/50   animate-floating-delay duration-100 ">
               <CardContent className="p-6">
                 <div className="flex items-center gap-4">
                   <div className="p-3 rounded-full bg-secondary/20 glow-secondary">
                     <MapPin className="h-6 w-6 text-secondary" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-foreground">Location</h3>
+                    <h3 className="font-semibold text-white">Location</h3>
                     <p className="text-muted-foreground">Kathmandu, Nepal</p>
                   </div>
                 </div>

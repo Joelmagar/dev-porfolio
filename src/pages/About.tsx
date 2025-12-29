@@ -1,45 +1,26 @@
-import { useEffect, useRef, useState } from "react";
-
+import { motion } from "framer-motion";
 export default function About() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.5 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
     <section
-      ref={sectionRef}
       id="about"
       className="section-padding container min-h-[80vh] flex flex-col justify-center mx-auto"
     >
-      <div
-        className={`transition-all duration-700 ${
-          isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-        }`}
-      >
+      <div className={`transition-all duration-700 opacity-100 translate-y-0 `}>
         <h2 className="flex items-center gap-4 text-2xl md:text-4xl font-bold text-foreground mb-10">
           <span className="font-mono text-primary text-xl">01.</span>
           About Me
           <span className="h-px bg-border flex-1 max-w-full" />
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-12">
-          <div className="md:col-span-2 space-y-4 backdrop-blur-lg rounded-md animate-pulse-glow shadow-primary p-2 text-muted-foreground">
+        <div className="grid md:grid-cols-3 gap-20">
+          <motion.div
+            initial={{ x: -50 }}
+            whileInView={{ x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.31 }}
+            //  ={{ x: 5 }}
+            className="md:col-span-2 space-y-10  rounded-md pr-20  shadow-primary p-2 text-muted-foreground"
+          >
             <p className="backdrop-blur-lg">
               Hello! I'm a passionate developer who loves building things that
               live on the internet. My journey into web development started
@@ -62,10 +43,10 @@ export default function About() {
               interface or a robust Node.js backend, I'm always eager to learn
               and push the boundaries of what's possible.
             </p>
-            <p className="text-foreground backdrop-blur-lg font-medium">
+            <p className="text-white backdrop-blur-lg text-lg font-medium">
               Here are some technologies I've been working with recently:
             </p>
-            <ul className="grid grid-cols-2  gap-2 font-mono text-sm">
+            <ul className="grid grid-cols-2 space-y-1 gap-2 font-mono text-sm">
               {[
                 "React.js",
                 "Node.js",
@@ -74,27 +55,64 @@ export default function About() {
                 "Express.js",
                 "Next.js",
               ].map((tech) => (
-                <li key={tech} className="flex  items-center gap-2">
+                <li key={tech} className="flex  items-center  gap-2">
                   <span className="text-primary">▹</span>
                   {tech}
                 </li>
               ))}
             </ul>
-          </div>
-
-          <div className="relative group">
-            <div className="relative z-10 rounded-lg overflow-hidden">
-              <div className="aspect-square bg-gradient-to-br from-secondary to-card rounded-lg flex items-center justify-center">
-                <div className="w-32 h-32 rounded-full bg-primary/20 flex items-center justify-center border-2 border-primary/30">
-                  <span className="text-4xl font-bold text-primary font-mono">
-                    JD
-                  </span>
-                </div>
+          </motion.div>
+          <motion.div
+            whileHover={{ y: -5 }}
+            initial={{ x: 50 }}
+            whileInView={{ x: 0 }}
+            transition={{ duration: 0.31 }}
+            viewport={{ once: true }}
+            //  ={{ x: 5 }}
+            className="relative shadow-primary/40 h-fit mx-7 my-auto  shadow-[0px_0px_20px_2px]   rounded-2xl p-8 border backdrop-blur-sm space-y-6"
+          >
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-xl bg-primary/20 flex items-center justify-center text-3xl font-heading font-bold gradient-text">
+                JM
               </div>
-              <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors duration-300" />
+              <div>
+                <h4 className="font-heading font-semibold text-lg">
+                  Joel Magar
+                </h4>
+                <p className="text-muted-foreground text-sm">
+                  MERN Stack Developer
+                </p>
+              </div>
             </div>
-            <div className="absolute inset-0 border-2 border-primary rounded-lg translate-x-4 translate-y-4 -z-10 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300" />
-          </div>
+
+            <div className="space-y-4">
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-muted-foreground">Experience</span>
+                <span className="text-primary font-medium">1.5+ Years</span>
+              </div>
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-muted-foreground">Projects</span>
+                <span className="text-primary font-medium">15+ Completed</span>
+              </div>
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-muted-foreground">Location</span>
+                <span className="text-foreground">Kathmandu, Nepal</span>
+              </div>
+            </div>
+
+            <div className="pt-4 border-t border-border">
+              <div className="flex gap-2 flex-wrap">
+                {["Frontend", "Backend", "Full-Stack"].map((tag) => (
+                  <span
+                    key={tag}
+                    className="px-3 py-1 text-xs rounded-full bg-primary/10 text-primary"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

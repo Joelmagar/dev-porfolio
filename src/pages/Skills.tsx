@@ -6,6 +6,7 @@ interface SkillCategory {
   title: string;
   skills: string[];
   icon: any;
+  color: string;
 }
 
 const skillCategories: SkillCategory[] = [
@@ -21,9 +22,11 @@ const skillCategories: SkillCategory[] = [
       "Redux",
       "HTML5/CSS3",
     ],
+    color: "hover:bg-primary/10 text-primary  ",
   },
   {
     title: "Backend ",
+    color: "hover:bg-secondary/10 text-secondary ",
     icon: Server,
     skills: [
       "Node.js",
@@ -37,11 +40,13 @@ const skillCategories: SkillCategory[] = [
   {
     title: "Database",
     icon: Database,
+    color: "hover:bg-cardGreen/10 text-cardGreen ",
     skills: ["MongoDB", "PostgreSQL", "Mongoose", "Firebase", "Redis", "SQL"],
   },
   {
     title: "Tools & Others",
     icon: GitBranch,
+    color: "hover:bg-cardOrange/10 text-cardOrange ",
     skills: ["Git", "GitHub", "Docker", "AWS", "Vercel", "Figma", "Postman"],
   },
 ];
@@ -67,14 +72,19 @@ export const Skills = () => {
           {skillCategories.map((category, index) => (
             <Card
               key={category.title}
-              className="border border-border bg-black/5 backdrop-blur-sm  z-20 hover:scale-105 transition-all duration-300 animate-floating"
+              className={`border border-border  ${category?.color}  hover:shadow-[0px_0px_5px_1px] backdrop-blur-md shadow-black  z-20 hover:scale-105 transition-all duration-300 animate-floating`}
               style={{
                 animationDelay: `${index * 0.2}s`,
                 animationDuration: `${6 + index * 0.5}s`,
               }}
             >
               <CardHeader className="text-center">
-                <div className="text-4xl text-primary mb-2 mx-auto">
+                <div
+                  className={`text-4xl   mb-2 mx-auto`}
+                  // style={{
+                  //   color: category.primary,
+                  // }}
+                >
                   <category.icon size={40} />
                 </div>
                 <CardTitle className="text-xl font-bold text-foreground">
@@ -88,7 +98,7 @@ export const Skills = () => {
                     <Badge
                       key={skill}
                       variant="secondary"
-                      className="bg-secondary/20 w-fit  text-secondary-foreground border border-secondary/30 hover:bg-secondary/30 transition-colors cursor-pointer"
+                      className="bg-secondary/0 w-fit p-3 px-5  text-secondary-foreground border border-secondary/30 hover:bg-secondary/30 transition-colors cursor-pointer"
                       style={{
                         animationDelay: `${index * 0.2 + skillIndex * 0.1}s`,
                       }}
