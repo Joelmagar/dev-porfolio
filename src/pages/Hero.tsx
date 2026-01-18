@@ -8,10 +8,24 @@ export function Hero() {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+  function onDownload() {
+    const file = document.createElement("a");
+    file.target = "_blank";
+    file.href = "/JOEL-MAGAR-CV.pdf";
+    file.download = "JOEL-MAGAR-CV.pdf";
 
+    document.body.appendChild(file);
+    file.click();
+
+    file.remove();
+    window.URL.revokeObjectURL("/JOEL-MAGAR-CV.pdf");
+    if (navigator?.userAgentData) {
+      console.log(navigator?.userAgentData?.platform);
+    }
+  }
   return (
-    <section className="min-h-[100vh]  flex items-center justify-center   overflow-hidden ">
-      <div className="container  mx-auto px-6   ">
+    <section className="min-h-[100vh]  flex items-center w-screen justify-center   overflow-hidden ">
+      <div className="md:w-[70%]  mx-auto px-6   ">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div className="space-y-8  relative p-2 ">
             <div className="space-y-4  p-2 rounded-sm ">
@@ -23,17 +37,17 @@ export function Hero() {
                   Joel Magar.
                 </span>
                 <br />
-                <span className="text-muted-foreground text-5xl">
+                <span className="text-muted-foreground text-xl">
                   {" "}
-                  I build things for the web.
+                  -- I build things for the web.
                 </span>
               </h1>
-              <p className="text-xl text-muted-foreground max-w-lg leading-relaxed">
+              {/* <p className="text-xl text-muted-foreground max-w-lg leading-relaxed">
                 I'm a Frontend & MERN Stack Developer with 1.5 years of
                 experience crafting responsive, user-centric web applications. I
                 specialize in React,Next.js, Node.js, and creating seamless
                 digital experiences.
-              </p>
+              </p> */}
             </div>
             {/* Skills Tags */}
             <div className="flex flex-wrap gap-2">
@@ -60,7 +74,7 @@ export function Hero() {
                 View My Work
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
-              <Button variant="outline" size="lg">
+              <Button onClick={onDownload} variant="outline" size="lg">
                 <Download className="w-4 h-4" />
                 Download CV
               </Button>

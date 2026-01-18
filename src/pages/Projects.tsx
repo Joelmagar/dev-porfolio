@@ -171,62 +171,64 @@ export const Projects = () => {
           {projects.map((project, index) => (
             <Card
               key={project.id}
-              className="  bg-primary/5 backdrop-blur-sm z-20 hover:scale-y-105 border-2 hover:border-primary/50 transition-all duration-300 group overflow-hidden"
+              className="  bg-primary/5 backdrop-blur-sm z-20 h-[50vh] hover:scale-y-105 border-2 hover:border-primary/50 transition-all duration-300 group overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="relative overflow-hidden">
+              <div className="relative h-1/2 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-48 object-cover  object-top  duration-300 group-hover:scale-110"
+                  className="w-full h-full object-cover  object-top  duration-300 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
+                <div className="absolute inset-0 opacity-100 group-hover:opacity-0 duration-200 bg-gradient-to-t from-background/80 to-transparent" />
               </div>
 
-              <CardHeader>
-                <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                  {project.title}
-                </CardTitle>
-                <CardDescription className="text-muted-foreground">
-                  {project.description}
-                </CardDescription>
-              </CardHeader>
+              <div className="h-1/2">
+                {" "}
+                <CardHeader>
+                  <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                    {project.title}
+                  </CardTitle>
+                  <CardDescription className="text-muted-foreground">
+                    {project.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex flex-wrap gap-2 w-fit">
+                    {project.tech.map((tech) => (
+                      <Badge
+                        key={tech}
+                        variant="secondary"
+                        className="bg-secondary/20 text-secondary-foreground border border-secondary/30"
+                      >
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
 
-              <CardContent className="space-y-4">
-                <div className="flex flex-wrap gap-2 w-fit">
-                  {project.tech.map((tech) => (
-                    <Badge
-                      key={tech}
-                      variant="secondary"
-                      className="bg-secondary/20 text-secondary-foreground border border-secondary/30"
-                    >
-                      {tech}
-                    </Badge>
-                  ))}
-                </div>
-
-                <div className="grid grid-cols-2  gap-2">
-                  {project.liveUrl && (
-                    <Button
-                      size="sm"
-                      className="bg-primary hover:bg-primary/90 text-primary-foreground"
-                    >
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Live Demo
-                    </Button>
-                  )}
-                  {project.githubUrl && (
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="glass border-2 hover:border-primary/50"
-                    >
-                      <Github className="h-4 w-4 mr-2" />
-                      Code
-                    </Button>
-                  )}
-                </div>
-              </CardContent>
+                  <div className="grid grid-cols-2  gap-2">
+                    {project.liveUrl && (
+                      <Button
+                        size="sm"
+                        className="bg-primary hover:bg-primary/90 text-primary-foreground"
+                      >
+                        <ExternalLink className="h-4 w-4 mr-2" />
+                        Live Demo
+                      </Button>
+                    )}
+                    {project.githubUrl && (
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="glass border-2 hover:border-primary/50"
+                      >
+                        <Github className="h-4 w-4 mr-2" />
+                        Code
+                      </Button>
+                    )}
+                  </div>
+                </CardContent>
+              </div>
             </Card>
           ))}
         </div>

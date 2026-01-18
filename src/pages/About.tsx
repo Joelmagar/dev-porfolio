@@ -5,7 +5,7 @@ export default function About() {
       id="about"
       className="section-padding container min-h-[80vh] flex flex-col justify-center mx-auto"
     >
-      <div className={`transition-all duration-700 opacity-100 translate-y-0 `}>
+      <div>
         <h2 className="flex items-center gap-4 text-2xl md:text-4xl font-bold text-foreground mb-10">
           <span className="font-mono text-primary text-xl">01.</span>
           About Me
@@ -28,11 +28,11 @@ export default function About() {
               ideas into interactive experiences.
             </p>
             <p className="backdrop-blur-lg">
-              With{" "}
+              With more than{" "}
               <span className="text-primary font-medium">
                 1.5 years of professional experience
               </span>
-              , I've had the privilege of working on diverse projects ranging
+              . I've had the privilege of working on diverse projects ranging
               from e-commerce platforms to real-time collaboration tools. I've
               collaborated with talented backend developers and also built
               full-stack applications independently using the MERN stack.
