@@ -166,7 +166,11 @@ All colors MUST be HSL for proper theming.
 
   body {
     @apply bg-background text-foreground overflow-x-hidden;
-    font-family: "Inter", system-ui, -apple-system, sans-serif;
+    font-family:
+      "Inter",
+      system-ui,
+      -apple-system,
+      sans-serif;
   }
 
   /* Scrollbar styling for futuristic look */
@@ -281,4 +285,7 @@ All colors MUST be HSL for proper theming.
       animation: rotate-slow 20s linear infinite;
     }
   }
+}
+* {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }

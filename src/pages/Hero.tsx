@@ -19,9 +19,9 @@ export function Hero() {
 
     file.remove();
     window.URL.revokeObjectURL("/JOEL-MAGAR-CV.pdf");
-    if (navigator?.userAgentData) {
-      console.log(navigator?.userAgentData?.platform);
-    }
+    // if (navigator?.userAgentData) {
+    //   console.log(navigator?.userAgentData?.platform);
+    // }
   }
   return (
     <section className="min-h-[100vh]  flex items-center w-screen justify-center   overflow-hidden ">
@@ -32,8 +32,8 @@ export function Hero() {
               <p className="text-primary font-medium tracking-wide  text-sm">
                 Hi , I am
               </p>
-              <h1 className="text-5xl lg:text-7xl font-bold leading-tight">
-                <span className="bg-gradient-to-br from-primary via-primary/9 backdrop-blur-lg  to-secondary  text-transparent bg-clip-text ">
+              <h1 className="text-5xl lg:text-7xl relative  font-bold leading-tight">
+                <span className=" bg-gradient-to-br italic    from-primary via-primary/9 backdrop-blur-lg  to-secondary  text-transparent bg-clip-text ">
                   Joel Magar.
                 </span>
                 <br />
@@ -59,7 +59,7 @@ export function Hero() {
                   >
                     {skill}
                   </span>
-                )
+                ),
               )}
             </div>
 
