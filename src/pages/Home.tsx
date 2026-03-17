@@ -10,6 +10,8 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
+import CursorFollower from "@/components/CursorFollower";
+import ProgressBar from "@/components/ProgressBar";
 gsap.registerPlugin(ScrollTrigger);
 const Index = () => {
   // const divRef = useRef(null);
@@ -51,36 +53,39 @@ const Index = () => {
   //   scope: containerRef,
   // });
   return (
-    <div className="min-h-screen  max-w-screen relative  overflow-x-hidden text-foreground">
-      {/* 3D Background Scene */}
+    <section className="cursor-none">
+      <CursorFollower />
+      <ProgressBar />
+      <div className="min-h-screen  max-w-screen relative  overflow-x-hidden text-foreground">
+        {/* 3D Background Scene */}
+        <Navigation />
+        <Scene />
 
-      <Navigation />
-      <Scene />
+        <main className="py-20 md:py-0">
+          <section id="home">
+            <Hero />
+          </section>
+          <section id="about">
+            <About />
+          </section>
 
-      <main className="py-20 md:py-0">
-        <section id="home">
-          <Hero />
-        </section>
-        <section id="about">
-          <About />
-        </section>
+          <section id="projects">
+            <Projects />
+          </section>
 
-        <section id="projects">
-          <Projects />
-        </section>
+          <section id="skills">
+            <Skills />
+          </section>
 
-        <section id="skills">
-          <Skills />
-        </section>
+          <section id="contact">
+            <Contact />
+          </section>
+        </main>
 
-        <section id="contact">
-          <Contact />
-        </section>
-      </main>
-
-      {/* Footer */}
-      <Footer />
-    </div>
+        {/* Footer */}
+        <Footer />
+      </div>
+    </section>
   );
 };
 

@@ -32,7 +32,7 @@ export const Navigation = () => {
 
   return (
     <nav
-      className={`fixed left-0 w-full top-0 border-b-2 z-50 duration-300 ${
+      className={`fixed left-0 w-full top-0 border-b-2 z-40 duration-300 ${
         isScrolled
           ? " backdrop-blur-md   border-white/30"
           : "border-transparent"
