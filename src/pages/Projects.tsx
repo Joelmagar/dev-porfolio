@@ -138,40 +138,41 @@ const otherProjects = [
 
 export const Projects = () => {
   const contentRef = useRef(null);
-  // useGSAP(() => {
-  //   gsap.to(contentRef.current, {
-  //     scrollTrigger: {
-  //       trigger: "#marker",
-  //       markers: true,
-  //       scrub: true,
-  //       start: "top 20%",
-  //       end: "bottom top",
-  //       pin: true,
-  //     },
+  const sectionRef = useRef(null);
 
-  //     duration: 2,
-  //   });
-  // });
+  useGSAP(() => {
+    gsap.to(contentRef.current, {
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        markers: true,
+        scrub: true,
+        start: "top top",
+        end: () => "+=" + (contentRef.current.scrollWidth - window.innerWidth),
+        pin: true,
+      },
+      x: () => -(contentRef.current.scrollWidth - window.innerWidth),
+    });
+  }, []);
   return (
-    <section id="projects" className="py-20 ">
-      <div className="container mx-auto px-6 ">
-        <h2 className="relative flex items-center gap-4 text-2xl md:text-4xl font-bold text-foreground mb-1">
+    <section ref={sectionRef} id="projects" className="py-20 ">
+      <div className=" px-6 overflow-hidden ">
+        <h2 className=" container mx-auto relative flex items-center gap-4 text-2xl md:text-4xl font-bold text-foreground mb-1">
           <span className="font-mono text-primary text-xl">02.</span>
           Featured Projects
           <span className="h-px bg-border flex-1 max-w-full" />
         </h2>
-        <div className="relative text-center mb-16 md:ml-14">
+        <div className="container mx-auto relative text-center mb-16 pl-20">
           <p className="text-xl text-muted-foreground  text-start ">
             Showcasing innovative solutions that push the boundaries of web
             technology
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div ref={contentRef} className="flex gap-8 px-20 w-fit">
           {projects.map((project, index) => (
             <Card
               key={project.id}
-              className="  bg-primary/5 backdrop-blur-sm z-20 h-[50vh] hover:scale-y-105 border-2 hover:border-primary/50 transition-all duration-300 group overflow-hidden"
+              className=" w-[50vw]  bg-primary/5 backdrop-blur-sm z-20 h-[50vh] hover:scale-y-105 border-2 hover:border-primary/50 transition-all duration-300 group overflow-hidden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative h-1/2 overflow-hidden">
@@ -232,11 +233,13 @@ export const Projects = () => {
             </Card>
           ))}
         </div>
-        <div className="  relref={contentRef}ative  gap-4">
-          <h3 className="text-center relative text-4xl text-gradient font-bold text-foreground mt-20">
-            Other Noteworthy Projects
-          </h3>
-          {/* <div className="flex gap-2">
+      </div>
+
+      <div className=" container mx-auto   gap-4">
+        <h3 className="text-center relative text-4xl text-gradient font-bold text-foreground mt-20">
+          Other Noteworthy Projects
+        </h3>
+        {/* <div className="flex gap-2">
             {otherProjects.map((project, index) => (
               <div
                 key={index}
@@ -282,76 +285,75 @@ export const Projects = () => {
               </div>
             ))}
           </div> */}
-          <Splide
-            options={{
-              type: "loop",
-              perPage: 3,
-              perMove: 1,
-              gap: "2rem",
-              autoScroll: {
-                pauseOnHover: true,
-                pauseOnFocus: false,
-                rewind: true,
-                speed: 1,
+        <Splide
+          options={{
+            type: "loop",
+            perPage: 3,
+            perMove: 1,
+            gap: "2rem",
+            autoScroll: {
+              pauseOnHover: true,
+              pauseOnFocus: false,
+              rewind: true,
+              speed: 1,
+            },
+            arrows: false,
+            pagination: false,
+            breakpoints: {
+              768: {
+                perPage: 1.5,
               },
-              arrows: false,
-              pagination: false,
-              breakpoints: {
-                768: {
-                  perPage: 1.5,
-                },
-                1024: {
-                  perPage: 3,
-                },
+              1024: {
+                perPage: 3,
               },
-            }}
-            extensions={{ AutoScroll }}
-          >
-            {otherProjects.map((project, index) => (
-              <SplideSlide
-                key={index}
-                className="group p-6 w-full mt-5  rounded-lg bg-card/50 border border-border hover:border-primary/50 hover:-translate-y-2 transition-all duration-300"
-              >
-                <div className="flex items-center justify-between mb-6">
-                  <Folder className="w-10 h-10 text-primary" />
-                  <div className="flex gap-3">
-                    {project.github && (
-                      <a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        <Github size={18} />
-                      </a>
-                    )}
-                    {project.live && (
-                      <a
-                        href={project.live}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-muted-foreground hover:text-primary transition-colors"
-                      >
-                        <ExternalLink size={18} />
-                      </a>
-                    )}
-                  </div>
+            },
+          }}
+          extensions={{ AutoScroll }}
+        >
+          {otherProjects.map((project, index) => (
+            <SplideSlide
+              key={index}
+              className="group p-6 w-full mt-5  rounded-lg bg-card/50 border border-border hover:border-primary/50 hover:-translate-y-2 transition-all duration-300"
+            >
+              <div className="flex items-center justify-between mb-6">
+                <Folder className="w-10 h-10 text-primary" />
+                <div className="flex gap-3">
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <Github size={18} />
+                    </a>
+                  )}
+                  {project.live && (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      <ExternalLink size={18} />
+                    </a>
+                  )}
                 </div>
-                <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
-                  {project.title}
-                </h4>
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                  {project.description}
-                </p>
-                <ul className="flex flex-wrap gap-2 font-mono text-xs text-muted-foreground">
-                  {project.tech.map((tech) => (
-                    <li key={tech}>{tech}</li>
-                  ))}
-                </ul>
-              </SplideSlide>
-            ))}
-          </Splide>
-        </div>
+              </div>
+              <h4 className="text-lg font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                {project.title}
+              </h4>
+              <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
+                {project.description}
+              </p>
+              <ul className="flex flex-wrap gap-2 font-mono text-xs text-muted-foreground">
+                {project.tech.map((tech) => (
+                  <li key={tech}>{tech}</li>
+                ))}
+              </ul>
+            </SplideSlide>
+          ))}
+        </Splide>
       </div>
     </section>
   );

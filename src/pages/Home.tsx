@@ -6,14 +6,17 @@ import { Skills } from "@/pages/Skills";
 import { Contact } from "@/pages/Contact";
 import About from "./About";
 import { Footer } from "./Footer";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 import CursorFollower from "@/components/CursorFollower";
 import ProgressBar from "@/components/ProgressBar";
+import LoadingModal from "@/components/LoadingModal";
 gsap.registerPlugin(ScrollTrigger);
 const Index = () => {
+  const [isLoading, setLoading] = useState(true);
+
   // const divRef = useRef(null);
   // const containerRef = useRef(null);
   // useGSAP(
@@ -54,6 +57,8 @@ const Index = () => {
   // });
   return (
     <section className="cursor-none">
+      {isLoading && <LoadingModal onComplete={() => setLoading(false)} />}
+
       <CursorFollower />
       <ProgressBar />
       <div className="min-h-screen  max-w-screen relative  overflow-x-hidden text-foreground">
