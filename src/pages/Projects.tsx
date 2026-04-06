@@ -144,7 +144,7 @@ export const Projects = () => {
     gsap.to(contentRef.current, {
       scrollTrigger: {
         trigger: sectionRef.current,
-        markers: true,
+        // markers: true,
         scrub: true,
         start: "top top",
         end: () => "+=" + (contentRef.current.scrollWidth - window.innerWidth),
