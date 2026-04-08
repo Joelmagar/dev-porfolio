@@ -32,7 +32,7 @@ const Index = () => {
   //         // pinSpacing: false,
   //       },
   //       x: 2000,
-  //       xPercent: -200,
+        // xPercent: -200,
   //       duration: 4,
   //     });
   //     gsap.from(containerRef.current, {
