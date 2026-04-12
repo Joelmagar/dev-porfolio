@@ -41,7 +41,7 @@ export default function LoadingModal({ onComplete }) {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 z-[100] flex flex-col items-center text-primary justify-center bg-black "
+      className="fixed inset-0 z-[100] backdrop-blur-md flex flex-col items-center text-primary justify-center bg-black "
     >
       <div className="mb-8 flex items-center gap-3">
         <span ref={textRef} className="font-heading  text-4xl font-bold">

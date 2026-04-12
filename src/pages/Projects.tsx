@@ -145,10 +145,13 @@ export const Projects = () => {
       scrollTrigger: {
         trigger: sectionRef.current,
         // markers: true,
-        scrub: true,
+        scrub: 1.5,
         start: "top top",
         end: () => "+=" + (contentRef.current.scrollWidth - window.innerWidth),
         pin: true,
+        anticipatePin: 1,
+        pinSpacing: true,
+        invalidateOnRefresh: true,
       },
       x: () => -(contentRef.current.scrollWidth - window.innerWidth),
     });
@@ -168,11 +171,16 @@ export const Projects = () => {
           </p>
         </div>
 
-        <div ref={contentRef} className="flex gap-8 px-20 w-fit">
+        <div
+          ref={contentRef}
+          style={{ willChange: "transform" }}
+          className="flex gap-8  px-20  w-fit"
+        >
           {projects.map((project, index) => (
             <Card
               key={project.id}
-              className=" w-[50vw]  bg-primary/5 backdrop-blur-sm z-20 h-[50vh] hover:scale-y-105 border-2 hover:border-primary/50 transition-all duration-300 group overflow-hidden"
+              className=" w-[50vw]  bg-primary/5 backdrop-blur-sm z-20 h-[50vh] hover:scale-y-105 border-2 
+               hover:border-primary/50 transition-all duration-300 group overflow-idden"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative h-1/2 overflow-hidden">
@@ -184,9 +192,9 @@ export const Projects = () => {
                 <div className="absolute inset-0 opacity-100 group-hover:opacity-0 duration-200 bg-gradient-to-t from-background/80 to-transparent" />
               </div>
 
-              <div className="h-1/2">
+              <div className="h-1/2 flex flex-col justify-between">
                 {" "}
-                <CardHeader>
+                <CardHeader className="py-2">
                   <CardTitle className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
                     {project.title}
                   </CardTitle>
@@ -194,7 +202,7 @@ export const Projects = () => {
                     {project.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-4">
+                <CardContent className="space-y-2">
                   <div className="flex flex-wrap gap-2 w-fit">
                     {project.tech.map((tech) => (
                       <Badge

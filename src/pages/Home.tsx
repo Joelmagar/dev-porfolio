@@ -32,7 +32,7 @@ const Index = () => {
   //         // pinSpacing: false,
   //       },
   //       x: 2000,
-        // xPercent: -200,
+  //       xPercent: -200,
   //       duration: 4,
   //     });
   //     gsap.from(containerRef.current, {
@@ -72,6 +72,7 @@ const Index = () => {
           </section>
           <section id="about">
             <About />
+            
           </section>
 
           <section id="projects">

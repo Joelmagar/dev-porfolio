@@ -1,24 +1,16 @@
-import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Float, Text3D, Center } from '@react-three/drei'
-import { Suspense } from 'react'
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Float, Text3D, Center } from "@react-three/drei";
+import { Suspense } from "react";
 
 function FloatingGeometry() {
   return (
-    <Float
-      speed={1.5}
-      rotationIntensity={1}
-      floatIntensity={2}
-    >
+    <Float speed={1.5} rotationIntensity={1} floatIntensity={2}>
       <mesh>
         <torusKnotGeometry args={[1, 0.3, 128, 16]} />
-        <meshStandardMaterial 
-          color="blue" 
-          roughness={0.1}
-          metalness={0.8}
-        />
+        <meshStandardMaterial color="blue" roughness={0.1} metalness={0.8} />
       </mesh>
     </Float>
-  )
+  );
 }
 
 function Scene3D() {
@@ -37,7 +29,7 @@ function Scene3D() {
 
       {/* 3D Objects */}
       <FloatingGeometry />
-      
+
       {/* Controls */}
       <OrbitControls
         enablePan={false}
@@ -48,7 +40,7 @@ function Scene3D() {
         autoRotateSpeed={2}
       />
     </>
-  )
+  );
 }
 
 export function ThreeScene() {
@@ -56,12 +48,12 @@ export function ThreeScene() {
     <div className="w-full h-full">
       <Canvas
         camera={{ position: [0, 0, 5], fov: 45 }}
-        style={{ background: 'transparent' }}
+        style={{ background: "transparent" }}
       >
         <Suspense fallback={null}>
           <Scene3D />
         </Suspense>
       </Canvas>
     </div>
-  )
+  );
 }
