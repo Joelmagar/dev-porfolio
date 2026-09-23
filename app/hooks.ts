@@ -41,7 +41,7 @@ export function useInView<T extends HTMLElement>(rootMargin = "120px") {
 }
 
 export function usePageVisibility() {
-  const [visible, setVisible] = useState(false); // safe SSR default
+  const [visible, setVisible] = useState(false); 
 
   useEffect(() => {
     setVisible(document.visibilityState === "visible"); // set real value client-side
