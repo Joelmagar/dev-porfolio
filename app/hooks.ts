@@ -2,11 +2,12 @@
 import { useEffect, useRef, useState } from "react";
 
 export function useMedia(query: string) {
-  const [matches, setMatches] = useState(
-    () => window.matchMedia(query).matches,
+  const [matches, setMatches] = useState(() =>
+    typeof window !== "undefined" ? window.matchMedia(query).matches : false,
   );
 
   useEffect(() => {
+    "use client";
     const media = window.matchMedia(query);
     const update = () => setMatches(media.matches);
     update();
@@ -40,11 +41,14 @@ export function useInView<T extends HTMLElement>(rootMargin = "120px") {
 }
 
 export function usePageVisibility() {
-  const [visible, setVisible] = useState(!document.hidden);
+  const [visible, setVisible] = useState(false); // safe SSR default
+
   useEffect(() => {
-    const update = () => setVisible(!document.hidden);
-    document.addEventListener("visibilitychange", update);
-    return () => document.removeEventListener("visibilitychange", update);
+    setVisible(document.visibilityState === "visible"); // set real value client-side
+
+    const handler = () => setVisible(document.visibilityState === "visible");
+    document.addEventListener("visibilitychange", handler);
+    return () => document.removeEventListener("visibilitychange", handler);
   }, []);
   return visible;
 }

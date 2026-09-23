@@ -306,7 +306,7 @@ function Pipeline({
   useFrame((_, delta) => {
     if (reducedMotion || !group.current) return;
     elapsed.current += Math.min(delta, 0.05);
-    group.current.children.forEach((child, i) => {
+    group.current.children.forEach((child: any, i: any) => {
       child.rotation.y += delta * (i === active ? 0.2 : 0.07);
       child.position.y = Math.sin(elapsed.current * 0.65 + i) * 0.08;
       const scale = i <= active ? 0.67 : 0.55;
